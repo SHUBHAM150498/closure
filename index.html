@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JavaScript</title>
+	<style>
+.container{
+	background-image: linear-gradient(to bottom right, red, yellow);
+}	
+.main{
+	text-align: center;
+	color: darkblue;
+	background-image: radial-gradient(red, yellow, green);
+    padding: 10px;
+    margin: 10px;
+}
+.head{
+	color: black;
+}
+.question{
+	color: black;
+}
+.code{
+	background-color: white;
+	padding: 10px;
+}
+    </style>
+</head>
+<body>
+	<div class="container">
+	<div class="main"><h1>JavaScript Handson</h1></div>
+    <div class="main"><h1>Closure</h1></div>
+	<br>
+<div class="question">1. </div>
+<pre class="code">
+    function counter(){
+    var counter = 0;
+
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+
+    return IncreaseCounter;
+}
+
+var counter = counter();
+alert(counter());
+alert(counter());
+alert(counter());
+alert(counter());
+</pre>
+<div class="head">OUTPUT - index.js:17 2<br> index.js:18 3<br> index.js:19 4</div>
+<br>
+<hr>
+<br>
+
+<div class="question">2. </div>
+<pre class="code">
+let count = 0;
+(function () {
+  if (count === 0) {
+    let count = 1;
+    console.log(count); // What is logged?
+  }
+  console.log(count); // What is logged?
+})();
+</pre>
+<div class="head">OUTPUT - index.js:51 1 index.js:53 0</div>
+<br>
+<hr>
+<br>
+
+<div class="question">3. </div>
+<pre class="code">
+    "for (var i = 0; i < 3; i++) {
+  setTimeout(function log() {
+    console.log(i); // What is logged?
+  }, 1000);
+}"
+</pre>
+<div class="head">OUTPUT - index.js:66 3 3 3</div>
+<br>
+<hr>
+<br>
+
+<div class="question"> 4. Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</div>
+<pre class="code">
+    const rectangle = (length) => {
+     br = function (breadth) {
+       console.log(length * breadth);
+    };
+   };
+  
+  rectangle(5);
+   br(8);
+</pre>
+<div class="head">output- index.js:91  40</div>
+
+<br>
+<hr>
+<br>
+<div class="question">5. Take a variable in outer function and create an inner function to increase the counter every time it is called </div>
+<pre class="code">
+    const outer = () => {
+     let n = 0;
+    inner = function () {
+       return n++;
+     };
+    return inner;
+    };
+  
+   const result = outer();
+   console.log(result());
+   console.log(result());
+   console.log(result());
+   console.log(result());
+</pre>
+<div class="head">OUTPUT - index.js:92 0<br> index.js:93 1<br> index.js:94 2<br> index.js:95 3</div>
+<br>
+<hr>
+<br>
+
+<div class="question">6. Print Output </div>
+<pre class="code">
+
+
+var a = 12;
+(function () {
+  alert(a);
+})();
+</pre>
+<div class="head">OUTPUT - 12</div>
+<br>
+<hr>
+<br>
+
+<div class="question">7. </div>
+<pre class="code">
+var a = 10;
+var x = (function () {
+  var a = 12;
+  return function () {
+    alert(a);
+  };
+})();
+x();
+</pre>
+<div class="head">OUTPUT - 12</div>
+<br>
+<hr>
+<br>
+
+<div class="question"> 8.</div>
+<pre class="code">
+    "var globalVar = ""xyz"";
+
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b';
+    
+    console.log(
+        ""outerArg = "" + outerArg + ""\n"" +
+        ""innerArg = "" + innerArg + ""\n"" +
+        ""outerVar = "" + outerVar + ""\n"" +
+        ""innerVar = "" + innerVar + ""\n"" +
+        ""globalVar = "" + globalVar);
+    
+    })(456);
+})(123);"
+</pre>
+<div class="head">output- index.js:159 outerArg = 123<br> innerArg = 456 <br>outerVar = a<br> innerVar = b<br> globalVar = xyz</div>
+
+<br>
+</div>
+</body>
+</html>
